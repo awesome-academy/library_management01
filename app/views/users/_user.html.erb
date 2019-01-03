@@ -5,8 +5,10 @@
         <tr>
           <th class="active" width="30%"><%= t ".avatar" %></th>
           <th class="text-center active" width="40%"><%= t ".name" %></th>
-          <% if current_user.admin? && !current_user?(@users) %>
+          <% if current_user %>
+            <% if current_user.admin? %>
             <th class="text-right active"><%= t ".action" %></th>
+            <% end %>
           <% end %>
         </tr>
       </thead>
@@ -25,11 +27,13 @@
           <td class="text-center name_width">
             <%= link_to user.name, user %>
           </td>
-          <% if current_user.admin? && !current_user?(user) %>
-            <td class="text-right">
-              <%= link_to t(".delete"), user, method: :delete,
-                data: {confirm: t(".confirm")} %>
-            </td>
+          <% if current_user %>
+            <% if current_user.admin? %>
+              <td class="text-right">
+                <%= link_to t(".delete"), user, method: :delete,
+                  data: {confirm: t(".confirm")} %>
+              </td>
+            <% end %>
           <% end %>
         </tr>
       </table>

@@ -196,11 +196,6 @@ textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-input {
-  height: auto !important;
-  margin-bottom: 15px;
-  width: 100%;
-}
 
 .btn-group input{
   width: auto !important;

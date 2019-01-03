@@ -1,15 +1,16 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".title" %></h1><hr>
+<% if(current_user.admin?) %>
+  <%= link_to new_publisher_path, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-plus">&nbsp;<%= t(".new") %></span>
+  <% end %>
+  <hr>
 
-<%= link_to new_publisher_path, class: "btn btn-primary" do %>
-  <span class="glyphicon glyphicon-plus">&nbsp;<%= t(".new") %></span>
+  <div>
+    <%= t ".download" %>
+    <%= link_to t(".excel"), publishers_path(format: "xls") %>
+  </div></br>
 <% end %>
-<hr>
-
-<div>
-  <%= t ".download" %>
-  <%= link_to t(".excel"), publishers_path(format: "xls") %>
-</div></br>
 
 <div class="input-group search_inline">
   <%= form_tag(publishers_path, method: :get) do %>
