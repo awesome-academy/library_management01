@@ -17,4 +17,8 @@ class Book < ApplicationRecord
   validates :year, presence: true
   validates :number_of_books, presence: true,
     length: {minimum: Settings.book.number.min_length}
+
+  def liked_by? user
+    likes.liked_by(user.id).present?
+  end
 end

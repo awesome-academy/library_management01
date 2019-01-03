@@ -24,7 +24,6 @@ class CategoriesController < ApplicationController
   def show; end
 
   def create
-
     @category = Category.new category_params
     @category.parent_id = params[:category][:id]
     if @category.save

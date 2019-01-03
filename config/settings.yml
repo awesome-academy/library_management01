@@ -12,6 +12,8 @@ book:
     min_length: 1
   content:
     max_length: 300
+  paginate:
+    per_page: 5
 category:
   name:
     max_length: 20

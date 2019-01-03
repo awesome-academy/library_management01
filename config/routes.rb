@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  default_url_options host: "localhost:3000"
+  get 'user_reviews/new'
+  get 'user_reviews/edit'
   root "books#index"
+  get "likes/create"
+  default_url_options host: "localhost:3000"
   get "sessions/new"
   get "users/new"
   get "/help", to: "static_pages#help"
@@ -18,6 +21,16 @@ Rails.application.routes.draw do
   get "/newauthors", to: "authors#new"
   get "/authors", to: "authors#index"
   get "/newbook", to: "books#new"
-  resources :users
-  resources :books, :authors, :publishers, :categories
+
+  resources :users do
+    resources :likes, only: [:create, :destroy]
+    resources :create_comment
+
+  end
+  resources :books do
+    resource :likes, only: [:create, :destroy]
+    resources :comments
+    resources :user_reviews
+  end
+  resources :authors, :publishers, :categories
 end

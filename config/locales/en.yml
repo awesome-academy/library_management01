@@ -55,7 +55,6 @@ en:
       categories: "Category"
       show_categories: "Show Categories"
       new_categories: "New Categories"
-
     footer:
       about: "About"
       contact: "Contact"
@@ -141,6 +140,9 @@ en:
     error:
       one: "1 error"
       other: "%{count} errors"
+    comment:
+      one: "1 comment"
+      other: "%{count} comments"
   sessions:
     new:
       login: "Log In"
@@ -194,6 +196,22 @@ en:
       update: "Book was updated successfully"
       error: "This book could not be found"
       select: "Please select parent of this book"
+    like: "Like"
+    dislike: "Dislike"
+    comment:
+      comment_by: "Comment by"
+      post: "Posted"
+      late: "lated"
+    show:
+      submit: "Submit"
+  likes:
+    create:
+      success: "Like successfully"
+      failed: "Like failed"
+    destroy:
+      deleted: "Dislike successfully"
+      failed: "Dislike failed"
+      cant_find: "Cant find"
   categories:
     show:
       error: "This category could not be found"
@@ -213,7 +231,6 @@ en:
     update:
       update: "Category was updated successfully"
       error: "This category could not be found"
-
   publishers:
     show:
       error: "This publisher could not be found"
@@ -232,3 +249,10 @@ en:
     update:
       updated: "Publisher was updated successfully"
       error: "This publisher could not be found"
+  comments:
+    create:
+      create_success: "Commment successfully"
+    load_book:
+      error_message: "Commment failed"
+    form:
+      post_comment: "Post comments"
