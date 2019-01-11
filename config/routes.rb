@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get "user_reviews/edit"
 
   resources :books do
-    resource :likes
+    resources :likes
     resources :comments
     resources :user_reviews
   end

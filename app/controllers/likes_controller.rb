@@ -1,9 +1,9 @@
 class LikesController < ApplicationController
   before_action :load_like, only: :destroy
+  before_action :load_book, only: [:create, :destroy]
 
   def index
-    @likes = @book.likes.paginate page: params[:page],
-      per_page: Settings.paginate.per_page
+    @likes = @book.likes._page params[:page]
   end
 
   def create
