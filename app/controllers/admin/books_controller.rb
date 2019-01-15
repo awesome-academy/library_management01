@@ -4,8 +4,8 @@ class Admin::BooksController < ApplicationController
   before_action :is_admin?, only: %i(edit destroy)
 
   def index
-    @books = Book.newest.search_book(params[:search])
-      ._page params[:page]
+    @q = Book.ransack params[:q]
+    @books = @q.result.newest._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @books.to_xsl}

@@ -1,9 +1,12 @@
+
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_book, only: :show
   before_action :load_categories, only: :index
 
   def index
-    @books = Book.newest.looking_for(params[:search])._page params[:page]
+    @q = Book.ransack params[:q]
+    @books = @q.result.newest._page params[:page]
     @request_detail = current_request.request_details.build
   end
 

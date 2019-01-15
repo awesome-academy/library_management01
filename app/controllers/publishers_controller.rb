@@ -3,8 +3,8 @@ class PublishersController < ApplicationController
   before_action :is_admin?, only: %i(edit destroy)
 
   def index
-    @publishers = Publisher.search_publisher(params[:search])
-      ._page params[:page]
+    @q = Publisher.ransack params[:q]
+    @publishers = @q.result.alphabet._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @publishers.to_xsl}

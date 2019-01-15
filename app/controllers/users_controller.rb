@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
   before_action :load_user, except: %i(index new create)
-  before_action :logged_in_user, except: %i(show new create)
   before_action :correct_user, only: %i(edit update)
   before_action :is_admin?, only: :destroy
 
   def index
-    @users = User.newest.search_user(params[:search], params[:role])
-      ._page params[:page]
-
+    @q = User.ransack params[:q]
+    @users = @q.result.newest._page params[:page]
     respond_to do |format|
       format.html
       format.xls{send_data @users.to_xsl}
