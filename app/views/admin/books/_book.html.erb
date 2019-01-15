@@ -7,7 +7,7 @@
           <th class="text-justify active" width="15%"><%= t ".category" %></th>
           <th class="text-center active" width="25%"><%= t ".author" %></th>
           <th class="text-center active" width="25%"><%= t ".publisher" %></th>
-          <% if current_user.admin? %>
+          <% if current_user&.admin? %>
             <th class="text-right active"><%= t ".action" %></th>
           <% end %>
         </tr>
@@ -25,10 +25,10 @@
         <td class="text-justify" width="15%"><%= link_to book.category.name, book %></td>
         <td class="text-center" width="24%"><%= book.author.name %></td>
         <td class="text-center" width="24%"><%= book.publisher.name %></td>
-        <% if current_user.admin? %>
+        <% if current_user&.admin? %>
           <td class="text-right">
             <%= link_to t(".delete"), admin_book_path(book), method: :delete,
-            data: {confirm: t(".confirm")} %>
+              data: {confirm: t(".confirm")} %>
             | <%= link_to t(".edit"), edit_admin_book_path(book) %>
           </td>
         <% end %>
