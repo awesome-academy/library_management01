@@ -1,7 +1,7 @@
 <% provide(:title, t(".title")) %>
 <h1><%= t(".title") %></h1>
 <hr>
-<% if can? :manage, Category %>
+<% if can? :manage, User %>
   <div>
     <%= t ".download" %>
     <%= link_to t(".excel"), users_path(format: "xls") %>
@@ -19,4 +19,3 @@
 <ul class="users">
   <%= render "user" %>
 </ul>
-

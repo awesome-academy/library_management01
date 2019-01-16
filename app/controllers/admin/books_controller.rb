@@ -28,7 +28,9 @@ class Admin::BooksController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def create
     @book = Book.new book_params
