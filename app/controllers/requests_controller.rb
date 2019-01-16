@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  load_and_authorize_resource
   before_action :load_request, except: %i(update index)
   before_action :is_admin?, only: %i(accept_request deny_request)
   before_action :check_quantity, only: %i(accept_request)
