@@ -34,10 +34,7 @@ class User < ApplicationRecord
   scope :newest, ->{order created_at: :DESC}
   scope :_page,
     ->(page){paginate page: page, per_page: Settings.paginate.per_page}
-  scope :search_user, -> (search, role) {
-    where("users.name LIKE ? and users.role = ?",
-    "%#{search.strip}%", role) if search.present?
-  }
+  ransack_alias :user, :name_or_email
 
   def self.digest string
     cost = if ActiveModel::SecurePassword.min_cost

@@ -4,11 +4,10 @@
 
 <div class="container">
   <div class="input-group search_inline">
-    <%= form_tag(books_path, method: :get) do %>
-      <%= text_field_tag :search, params[:search],
-        placeholder: t(".search"), class: "form-control search_input" %>
-      <%= submit_tag t(".button_search"), name: nil,
-        class: "btn btn-primary btn_search" %><i class="fa fa-search fa-fw"></i>
+    <%= search_form_for @q do |f| %>
+    <%= f.label :book %>
+    <%= f.search_field :book_cont, placeholder: t(".search") %>
+    <%= f.submit t(".search"), name: nil, class: "btn btn-primary btn_search" %>
     <% end %>
   </div><hr>
 
