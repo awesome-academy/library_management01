@@ -1,4 +1,5 @@
 class Admin::BooksController < ApplicationController
+  load_and_authorize_resource
   before_action :load_book, except: %i(new create index)
   before_action :load_categories, only: %i(new edit index)
   before_action :is_admin?, only: %i(edit destroy)

@@ -14,7 +14,7 @@
       <th class="text-center"><%= t(".action") %></th>
       <th class="text-center note"><%= t(".note") %></th>
     </tr>
-    <% if current_user.admin? %>
+    <% if can? :create, Request %>
         <%= render @requests %>
     <% else %>
       <%= render "requests/request_user" %>

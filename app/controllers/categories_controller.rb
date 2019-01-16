@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  load_and_authorize_resource
   before_action :load_category, except: %i(new create index)
   before_action :is_admin?, only: %i(edit destroy)
 

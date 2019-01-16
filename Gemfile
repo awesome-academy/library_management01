@@ -5,6 +5,7 @@ gem "bcrypt", "3.1.12"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass"
 gem "bootstrap-will_paginate"
+gem "cancancan", "~> 2.0"
 gem "carrierwave"
 gem "coffee-rails", "~> 4.2"
 gem "config"

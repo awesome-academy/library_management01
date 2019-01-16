@@ -5,7 +5,7 @@
         <tr>
           <th class="active" width="30%"><%= t ".name" %></th>
           <th class="text-center active" width="40%"><%= t ".address" %></th>
-          <% if current_user&.admin? %>
+          <% if can? :manage, Publisher %>
             <th class="text-right active"><%= t ".action" %></th>
           <% end %>
         </tr>
@@ -25,7 +25,7 @@
           <td class="text-center" width="40%">
             <%= publisher.address %>
           </td>
-          <% if current_user&.admin? %>
+          <% if can? :manage, Publisher %>
             <td class="text-right">
               <%= link_to t(".delete"), publisher,
                 method: :delete, data: {confirm: t(".confirm")} %>

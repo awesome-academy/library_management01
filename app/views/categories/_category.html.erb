@@ -5,7 +5,7 @@
         <tr>
           <th class="active" width="30%"><%= t ".name" %></th>
           <th class="text-center active" width="40%"><%= t ".parent_category" %></th>
-          <% if current_user&.admin? %>
+          <% if can? :manage, Category %>
             <th class="text-right active"><%= t ".action" %></th>
           <% end %>
         </tr>
@@ -27,7 +27,7 @@
               <%= find_category(category.parent_id).name %>
             <% end %>
           </td>
-         <% if current_user&.admin? %>
+         <% if can? :manage, Category %>
             <td class="text-right">
               <%= link_to t(".delete"), category,
                 method: :delete, data: {confirm: t(".confirm")} %>

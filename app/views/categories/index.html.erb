@@ -1,6 +1,6 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".title" %></h1><hr>
-<% if(current_user.admin?) %>
+<% if can? :create, Category %>
   <%= link_to new_category_path, class: "btn btn-primary" do %>
     <span class="glyphicon glyphicon-plus">&nbsp;<%= t(".new") %></span>
   <% end %>
