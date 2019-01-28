@@ -1,6 +1,5 @@
 class LikesController < ApplicationController
   before_action :load_like, only: :destroy
-  before_action :load_book, only: [:create, :destroy]
 
   def index
     @likes = @book.likes._page params[:page]
@@ -31,13 +30,6 @@ class LikesController < ApplicationController
     @like = current_user.likes.find_by book_id: params[:book_id]
     return if @like
     flash[:danger] = t ".cant_find"
-    redirect_to root_path
-  end
-
-  def load_book
-    @book = Book.find_by id: params[:id]
-    return if @book
-    flash[:danger] = t ".error"
     redirect_to root_path
   end
 end

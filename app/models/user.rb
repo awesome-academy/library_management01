@@ -34,6 +34,7 @@ class User < ApplicationRecord
   scope :newest, ->{order created_at: :DESC}
   scope :_page,
     ->(page){paginate page: page, per_page: Settings.paginate.per_page}
+
   ransack_alias :user, :name_or_email
 
   def self.digest string

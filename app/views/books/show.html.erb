@@ -51,7 +51,7 @@
 <aside>
     <div class="like">
         <% if @book.liked_by? current_user %>
-          <%= link_to book_likes_path(@book), method: :delete, class: "btn btn-success" do %>
+          <%= link_to book_like_path(@book), method: :delete, class: "btn btn-success" do %>
             <i class="glyphicon glyphicon-thumbs-up"></i>
           <% end %>
         <% else %>

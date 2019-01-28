@@ -5,8 +5,6 @@
     </strong>
   </a>
   <div id="comments">
-    <% if @book.comments.count.positive? %>
-      <%= render partial: "books/comment", collection: @book.comments.reverse, as: :comment %>
-    <% end %>
+     <%= render partial: "books/comment", collection: @book.comments.reverse %>
   </div>
 </div>

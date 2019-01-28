@@ -1,9 +1,10 @@
-<% if comment.id %>
-  <div class="content_comment">
-    <h4> <%= t(".comment_by") %> <b> <%= comment.user.name %> </b></h4>
-    <p class="comment"><%= comment.content %></p>
-    <p><%= t(".post") %> <%= distance_of_time_in_words(comment.book.created_at,
-     comment.created_at) %> <%= t(".late") %></p>
-    <hr>
-  </div>
-<% end %>
+<div class="content_comment">
+  <h4> <%= t(".comment_by") %> <b> <%= comment.user.name %> </b></h4>
+  <p class="comment"><%= comment.content %></p>
+  <p>
+    <%= t(".post") %>
+    <%= distance_of_time_in_words(comment.book.created_at,
+      comment.created_at) %> <%= t(".late") %>
+  </p>
+  <hr>
+</div>

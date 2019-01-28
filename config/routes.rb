@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
   default_url_options host: "localhost:3000"
   root "books#index"
-  get "sessions/new"
-  get "users/new"
   get "/help", to: "static_pages#help"
   get "/about", to: "static_pages#about"
   get "/contact", to: "static_pages#contact"
-  # get "/signup", to: "users#new"
-  # post "/signup", to: "users#create"
-  # get "/login", to: "sessions#new"
-  # post "/login", to: "sessions#create"
-  # delete "/logout", to: "sessions#destroy"
-  devise_for :users
+  # devise_for :user do
+  #  get "/login", :to => "devise/sessions#new"
+  #  get "/logout", :to => "devise/sessions#destroy"
+  #  get "/register", :to => "devise/registrations#new"
+  # end
+  # devise_for :users, controllers: {sessions: "sessions"}
+  # devise_for :users, controllers: { sessions: 'devise/sessions' }, skip: [:sessions]
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
+  # as :user do
+  #   get 'signin', to: 'devise/sessions#new', as: :new_user_session
+  #   post 'signin', to: 'devise/sessions#create', as: :user_session
+  #   delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
+  # end
 
   resources :users
   resources :books

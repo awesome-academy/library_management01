@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :load_book, only: :create
-  before_action :load_user
 
   def index
     @comment = Comment.order_by_created_at._page params[:page]
@@ -32,13 +31,6 @@ class CommentsController < ApplicationController
     @book = Book.find_by id: params[:book_id]
     return if @book
     flash[:danger] = t "books.load_book.error_message"
-    redirect_to root_path
-  end
-
-  def load_user
-    @user = User.find_by id: params[:id]
-    return if @user
-    flash[:danger] = t ".error"
     redirect_to root_path
   end
 end
